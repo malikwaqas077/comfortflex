@@ -4,6 +4,8 @@
 
 **Physics-informed thermal comfort and grid demand-response control for commercial HVAC.**
 
+▶ **[Watch the 1 min 40 s demo video](https://github.com/malikwaqas077/comfortflex/releases/download/v0.1.0/ComfortFlex_Demo_Waqas_Ahmad.mp4)**
+
 ComfortFlex takes a building zone from human-comfort physics, through a thermal model learned from sensor data, to
 a grid-aware controller with the safety layer it needs to run on live plant. It covers the path a building-physics
 model follows from research into production:
