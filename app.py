@@ -88,7 +88,8 @@ a live building:
     kdf = pd.DataFrame({"Thermostat (BMS schedule)": kb, "ComfortFlex MPC": km}).round(2)
     kdf.index = ["Energy (kWh)", "Cost (£)", "CO₂ (kg)", "Energy in DR events (kWh)", "Mean load in DR events (kW)",
                  "Peak electrical load (kW)", "Occupied hours", "Discomfort (K·h outside band)",
-                 "Occupied time in PMV band (%)", "Mean PPD occupied (%)", "Fallback steps"]
+                 "Occupied time in PMV band (%)", "Mean PPD occupied (%)", "Fallback steps",
+                 "Flexibility payment vs baseline (£)"]
     st.table(kdf.style.format("{:.2f}"))
 
 # Comfort -------------------------------------------------------------------------

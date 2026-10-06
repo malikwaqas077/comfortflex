@@ -32,19 +32,25 @@ when occupied, setback otherwise).
 
 | KPI (thermostat → ComfortFlex) | Summer heatwave (cooling) | Winter cold snap (heating) |
 |---|---|---|
-| Electricity cost | £15.55 → £10.29 (**−34%**) | £76.63 → £53.77 (**−30%**) |
-| Grid CO₂ | 9.35 → 6.23 kg (**−33%**) | 57.5 → 47.3 kg (**−18%**) |
-| Energy | 56.0 → 39.1 kWh (−30%) | 358 → 307 kWh (−14%) |
 | Load during flexibility events | 8.8 → 2.0 kWh (**−77%**) | 6.8 → 0.0 kWh (**−100%**) |
+| Flexibility payment at £3/kWh vs baseline | **£20.35** | **£20.41** |
+| Electricity cost (excl. flexibility payment) | £15.55 → £10.29 (**−34%**) | £76.63 → £72.46 (−5%) |
+| Grid CO₂ | 9.35 → 6.23 kg (**−33%**) | 57.5 → 59.4 kg (+3%) |
+| Energy | 56.0 → 39.1 kWh (−30%) | 358 → 376 kWh (+5%) |
 | Occupied time with \|PMV\| ≤ 0.5 | 96.5% → 97.5% | 97.5% → 100% |
 | Discomfort (K·h outside band) | 0.38 → 0.24 | 0.38 → 0.00 |
 | Model, 7-day open-loop prediction on held-out week | RMSE 0.18 K, CV(RMSE) 0.8% | RMSE 0.33 K, CV(RMSE) 1.9% |
 
-**Where the savings come from.** (1) Holding a *PMV-derived* band instead of a fixed setpoint, which lets the zone
-float to the edge of comfort; (2) pre-cooling or pre-heating the thermal mass ahead of peak-price, high-carbon and
-flexibility-event periods, then coasting; (3) higher heat-pump COP in cooler night-time or warmer daytime hours.
-In winter, mean PPD rises from 5.7% to 7.5% because the zone is held nearer the cool edge of Category B. That is a
-deliberate, tunable trade-off: select ISO 7730 Category A in the dashboard to see the cost of tighter comfort.
+**Reading the results honestly.**
+
+- *Summer:* the savings come from holding a **PMV-derived band** rather than a fixed 24 °C setpoint, from pre-cooling
+  the thermal mass in cheaper, cooler and lower-carbon hours (higher COP), and from coasting through the event.
+- *Winter:* the controller's main value is **flexibility and comfort**, not kWh. It stores heat in the building
+  fabric ahead of the 16:00–19:00 event and the evening price peak, removing all event load and all occupied
+  discomfort. Storing heat early costs about 5% more energy through extra fabric losses. This trade-off is set by the
+  tariff and the carbon shadow price, both adjustable in the dashboard.
+- Setback and frost-protection limits are enforced when the building is unoccupied. An earlier version let the zone
+  drift below them at weekends, which overstated the winter savings; the end-to-end test now checks for this.
 
 ## Quick start
 
@@ -63,7 +69,7 @@ streamlit run app.py       # dashboard at http://localhost:8501
 - **Kalman filter** recovers a hidden thermal-mass temperature from the air sensor alone.
 - **MPC** plans respect comfort, ramp and seasonal-mode constraints, and shift load out of flexibility events.
 - **Safety guard** rejects implausible or stale data, falls back on optimiser failure, and rate-limits commands.
-- **End-to-end** winter run beats the thermostat on cost, DR load and comfort while riding through a sensor outage.
+- **End-to-end** winter run beats the thermostat on cost, DR load and comfort, rides through a sensor outage, and holds frost protection.
 
 ## Honest limitations and next steps
 

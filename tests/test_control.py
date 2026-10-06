@@ -77,7 +77,8 @@ def test_guard_falls_back_on_bad_sensor_and_limits_ramp():
 def test_end_to_end_winter_mpc_beats_thermostat():
     r = run(Config(season="winter"))
     b, m = r["kpi_baseline"], r["kpi_mpc"]
-    assert m["cost_gbp"] < 0.9 * b["cost_gbp"]
+    assert m["cost_gbp"] < b["cost_gbp"]
     assert m["dr_energy_kwh"] < 0.2 * b["dr_energy_kwh"]
     assert m["discomfort_kh"] <= b["discomfort_kh"]
     assert m["fallback_steps"] > 0                       # sensor outage was handled
+    assert r["mpc"].loc[~r["mpc"]["occupied"], "ti"].min() > 15.0   # frost/setback protection held

@@ -135,7 +135,7 @@ class MPCWeights:
     carbon_price: float = 0.10       # GBP per kgCO2 (shadow price)
     dr_price: float = 3.00           # GBP per kWh avoided during a flexibility event
     comfort_occupied: float = 4.0    # GBP per K-hour outside the PMV band
-    comfort_unoccupied: float = 0.05
+    comfort_unoccupied: float = 1.0  # setback limits are protection limits
     move: float = 0.02               # GBP per kW of command change (compressor wear, chatter)
 
 

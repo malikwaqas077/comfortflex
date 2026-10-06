@@ -11,20 +11,22 @@
    "discomfort_kh": 0.38156668250647385,
    "pct_occ_hours_in_band": 96.5,
    "mean_ppd_occ": 6.9973388771698275,
-   "fallback_steps": 0
+   "fallback_steps": 0,
+   "flex_payment_gbp": 0.0
   },
   "m": {
-   "energy_kwh": 39.143017767634575,
+   "energy_kwh": 39.14301776763457,
    "cost_gbp": 10.293626976954652,
-   "co2_kg": 6.225341318310365,
+   "co2_kg": 6.225341318310364,
    "dr_energy_kwh": 2.0010996618631816,
    "dr_mean_kw": 0.33351661031053026,
-   "peak_kw": 1.8356699085329884,
+   "peak_kw": 1.8356699085329882,
    "occupied_hours": 50.0,
    "discomfort_kh": 0.24399286192614777,
    "pct_occ_hours_in_band": 97.5,
-   "mean_ppd_occ": 6.953629869417244,
-   "fallback_steps": 3
+   "mean_ppd_occ": 6.953629869417243,
+   "fallback_steps": 3,
+   "flex_payment_gbp": 20.347024584132335
   },
   "id": {
    "rmse_K": 0.1834764694543366,
@@ -54,20 +56,22 @@
    "discomfort_kh": 0.3813804689521607,
    "pct_occ_hours_in_band": 97.5,
    "mean_ppd_occ": 5.700650608195088,
-   "fallback_steps": 0
+   "fallback_steps": 0,
+   "flex_payment_gbp": 0.0
   },
   "m": {
-   "energy_kwh": 307.1558508649262,
-   "cost_gbp": 53.76611418218173,
-   "co2_kg": 47.29039616378515,
+   "energy_kwh": 376.0309626072275,
+   "cost_gbp": 72.45956922479455,
+   "co2_kg": 59.395876239793,
    "dr_energy_kwh": 0.0,
    "dr_mean_kw": 0.0,
-   "peak_kw": 5.7673105015096615,
+   "peak_kw": 5.670813109083113,
    "occupied_hours": 50.0,
    "discomfort_kh": 0.0,
    "pct_occ_hours_in_band": 100.0,
-   "mean_ppd_occ": 7.519265653876101,
-   "fallback_steps": 3
+   "mean_ppd_occ": 7.423743671135327,
+   "fallback_steps": 3,
+   "flex_payment_gbp": 20.41050181881864
   },
   "id": {
    "rmse_K": 0.33058977410171175,

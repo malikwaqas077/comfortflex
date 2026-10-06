@@ -205,6 +205,10 @@ def run(cfg: Config | None = None) -> dict:
     res_b = run_closed_loop(df, n, "baseline", plant, hp, None, cfg)
     res_m = run_closed_loop(df, n, "mpc", plant, hp, ident["fit"].model, cfg)
     k_b, k_m = kpis(res_b, cfg.pmv_limit), kpis(res_m, cfg.pmv_limit)
+    # Flexibility schemes (e.g. ESO DFS) pay for turn-down measured against a baseline
+    dr_price = (cfg.weights or MPCWeights()).dr_price
+    k_b["flex_payment_gbp"] = 0.0
+    k_m["flex_payment_gbp"] = max(0.0, k_b["dr_energy_kwh"] - k_m["dr_energy_kwh"]) * dr_price
     return {"config": cfg, "scenario": base, "band": band, "ident": ident,
             "baseline": res_b, "mpc": res_m, "kpi_baseline": k_b, "kpi_mpc": k_m,
             "guard_log": res_m.attrs.get("guard_log", [])}
